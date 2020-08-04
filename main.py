@@ -3,7 +3,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 # Image path 
-image_path = r'/Users/siu/Desktop/qr.jpeg '
+image_path = 'qr.jpeg '
 
 img = cv2.imread(image_path,0)
 
