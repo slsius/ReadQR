@@ -13,14 +13,24 @@ cv2.imshow('My Image', thresh1)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 
-ret,thresh2 = cv2.threshold(img,127,255,cv2.THRESH_BINARY_INV)
-
-
-ret,thresh3 = cv2.threshold(img,127,255,cv2.THRESH_TRUNC)
-
 ret,thresh4 = cv2.threshold(img,127,255,cv2.THRESH_TOZERO)
 cv2.imshow('My Image', thresh4)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 
-ret,thresh5 = cv2.threshold(img,127,255,cv2.THRESH_TOZERO_INV)
+kernel = np.ones((5,5),np.uint8)
+erosion = cv2.erode(img,kernel,iterations = 1)
+cv2.imshow('My Image', erosion)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+
+ret,thresh1 = cv2.threshold(erosion,127,255,cv2.THRESH_BINARY)
+cv2.imshow('My Image', thresh1)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+ret,thresh4 = cv2.threshold(erosion,127,255,cv2.THRESH_TOZERO)
+cv2.imshow('My Image', thresh4)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
