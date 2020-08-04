@@ -3,7 +3,8 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 # Image path 
-image_path = 'qr.jpeg '
+#image_path = '/Users/siu/Documents/PythonPrograms/ReadQR/qr.jpeg'
+image_path = 'qr.jpeg'
 
 img = cv2.imread(image_path,0)
 cv2.imshow('My Image', img)
