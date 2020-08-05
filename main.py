@@ -8,6 +8,8 @@ import cv2
 #image_path = '/Users/siu/Documents/PythonPrograms/ReadQR/qr.jpeg'
 image_path = 'qr.jpeg'
 
+rt = 0.15
+
 img = cv2.imread(image_path,0)
 image = img 
 
