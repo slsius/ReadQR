@@ -1,9 +1,9 @@
+from __future__ import print_function
 from pyzbar.pyzbar import decode
 from pyzbar.pyzbar import ZBarSymbol
 from PIL import Image
 import numpy as np
 import cv2
-from __future__ import print_function
 from builtins import input
 import cv2 as cv
 
