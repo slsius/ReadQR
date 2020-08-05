@@ -39,6 +39,7 @@ except ValueError:
 # Instead of these 'for' loops we could have used simply:
 # new_image = cv.convertScaleAbs(image, alpha=alpha, beta=beta)
 # but we wanted to show you how to access the pixels :)
+'''
 for y in range(image.shape[0]):
     for x in range(image.shape[1]):
         for c in range(image.shape[2]):
@@ -48,7 +49,7 @@ cv.imshow('New Image', new_image)
 # Wait until user press some key
 cv.waitKey()
 cv2.destroyAllWindows()
-
+'''
 
 
 
