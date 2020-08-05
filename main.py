@@ -23,6 +23,7 @@ new_image = np.zeros(image.shape, image.dtype)
 alpha = 1.0 # Simple contrast control
 beta = 0    # Simple brightness control
 # Initialize values
+'''
 print(' Basic Linear Transforms ')
 print('-------------------------')
 try:
@@ -30,6 +31,7 @@ try:
     beta = int(input('* Enter the beta value [0-100]: '))
 except ValueError:
     print('Error, not a number')
+'''    
 # Do the operation new_image(i,j) = alpha*image(i,j) + beta
 # Instead of these 'for' loops we could have used simply:
 # new_image = cv.convertScaleAbs(image, alpha=alpha, beta=beta)
