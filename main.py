@@ -9,6 +9,7 @@ import cv2
 image_path = 'qr.jpeg'
 
 img = cv2.imread(image_path,0)
+image = img 
 
 ret,thresh1 = cv2.threshold(img,127,255,cv2.THRESH_BINARY)
 
