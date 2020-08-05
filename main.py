@@ -10,7 +10,7 @@ image_path = 'qr.jpeg'
 
 rt = 0.8
 
-img = cv2.imread(image_path,0)
+img = cv2.imread(image_path)
 image = img 
 
 ret,thresh1 = cv2.threshold(img,127,255,cv2.THRESH_BINARY)
