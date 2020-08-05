@@ -15,26 +15,6 @@ image = img
 
 ret,thresh1 = cv2.threshold(img,127,255,cv2.THRESH_BINARY)
 
-#ret,thresh4 = cv2.threshold(img,127,255,cv2.THRESH_TOZERO)
-
-kernel = np.ones((2,2),np.uint8)
-erosion = cv2.erode(img,kernel,iterations = 1)
-cv2.imshow('Ero', erosion)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
-
-'''
-ret,thresh1 = cv2.threshold(erosion,127,255,cv2.THRESH_BINARY)
-cv2.imshow('BW', thresh1)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
-
-'''
-ret,thresh4 = cv2.threshold(erosion,127,255,cv2.THRESH_TOZERO)
-cv2.imshow('My Image', thresh4)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
-'''
 bw_im = thresh1
 barcodes = decode(bw_im, symbols=[ZBarSymbol.QRCODE])
 
@@ -63,4 +43,3 @@ cv2.imwrite('product.jpg',image)
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
-'''
