@@ -10,21 +10,21 @@ rt = 0.15
 image = cv2.imread(
     'shadow_out.png')
 
-cv2.imwrite('original.jpg',image)
+cv2.imwrite('original.png',image)
 
 imageGRY = cv2.imread(
     'shadow_out.png', cv2.IMREAD_GRAYSCALE)
 cv2.imwrite('gray.jpg',imageGRY)
 
 blur = cv2.GaussianBlur(imageGRY, (5, 5), 0)
-cv2.imwrite('blur.jpg',blur)
+cv2.imwrite('blur.png',blur)
 
 ret, bw_im = cv2.threshold(blur, 0, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)
 # zbar
 cv2.imshow("bw_im", cv2.resize(
     bw_im, (int(bw_im.shape[1]*rt), int(bw_im.shape[0]*rt))))
 
-cv2.imwrite('bw_im.jpg',bw_im)
+cv2.imwrite('bw_im.png',bw_im)
 
 
 barcodes = decode(bw_im, symbols=[ZBarSymbol.QRCODE])
@@ -51,6 +51,6 @@ for barcode in barcodes:
 
 imS = cv2.resize(image, (int(image.shape[1]*rt), int(image.shape[0]*rt)))
 cv2.imshow("product", imS)
-cv2.imwrite('product.jpg',image)
+cv2.imwrite('product.png',image)
 
 cv2.waitKey(0)
