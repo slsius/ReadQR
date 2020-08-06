@@ -70,12 +70,17 @@ cv2.imwrite('shadows_out.png', result)
 cv2.imwrite('shadows_out_norm.png', result_norm)
 
 
+
+# loop over the detected barcodes
+barcodes = decode(result, symbols=[ZBarSymbol.QRCODE])
+
+
 # loop over the detected barcodes
 for barcode in barcodes:
     # extract the bounding box location of the barcode and draw the
     # bounding box surrounding the barcode on the image
     (x, y, w, h) = barcode.rect
-    cv2.rectangle(result, (x, y), (x + w, y + h), (0, 0, 255), 2)
+    cv2.rectangle(image, (x, y), (x + w, y + h), (0, 0, 255), 2)
     # the barcode data is a bytes object so if we want to draw it on
     # our output image we need to convert it to a string first
     barcodeData = barcode.data.decode("utf-8")
@@ -90,7 +95,7 @@ for barcode in barcodes:
 
 
 imS = cv2.resize(image, (int(image.shape[1]*rt), int(image.shape[0]*rt)))
-#cv2.imshow("product", imS)
+cv2.imshow("product", imS)
 cv2.imwrite('product.jpg',image)
 
 cv2.waitKey(0)
