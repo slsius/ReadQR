@@ -1,44 +1,34 @@
-from __future__ import print_function
 from pyzbar.pyzbar import decode
 from pyzbar.pyzbar import ZBarSymbol
 from PIL import Image
 import numpy as np
 import cv2
-from builtins import input
-import cv2 as cv
 
-# Image path 
-#image_path = '/Users/siu/Documents/PythonPrograms/ReadQR/qr.jpeg'
-image_path = 'shadow_out.jpeg'
-
-rt = 0.8
-
-img = cv2.imread(image_path,0)
-
-ret,thresh = cv2.threshold(img,127,255,cv2.THRESH_BINARY)
-
-rgb_planes = cv2.split(img)
-
-result_planes = []
-result_norm_planes = []
-for plane in rgb_planes:
-    dilated_img = cv2.dilate(plane, np.ones((7,7), np.uint8))
-    bg_img = cv2.medianBlur(dilated_img, 21)
-    diff_img = 255 - cv2.absdiff(plane, bg_img)
-    norm_img = cv2.normalize(diff_img,None, alpha=0, beta=255, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_8UC1)
-    result_planes.append(diff_img)
-    result_norm_planes.append(norm_img)
-
-result = cv2.merge(result_planes)
-result_norm = cv2.merge(result_norm_planes)
-
-cv2.imwrite('shadows_out.png', result)
-cv2.imwrite('shadows_out_norm.png', result_norm)
+rt = 0.15
 
 
-bw_im = result_planes
+image = cv2.imread(
+    'shadow_out.jpg')
+
+cv2.imwrite('original.jpg',image)
+
+imageGRY = cv2.imread(
+    'C:\\Users\\Nathan\\Downloads\\IMG_20200731_154553.jpg', cv2.IMREAD_GRAYSCALE)
+cv2.imwrite('gray.jpg',imageGRY)
+
+blur = cv2.GaussianBlur(imageGRY, (5, 5), 0)
+cv2.imwrite('blur.jpg',blur)
+
+ret, bw_im = cv2.threshold(blur, 0, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)
+# zbar
+cv2.imshow("bw_im", cv2.resize(
+    bw_im, (int(bw_im.shape[1]*rt), int(bw_im.shape[0]*rt))))
+
+cv2.imwrite('bw_im.jpg',bw_im)
+
+
 barcodes = decode(bw_im, symbols=[ZBarSymbol.QRCODE])
-image = result_planes
+
 
 # loop over the detected barcodes
 for barcode in barcodes:
@@ -64,5 +54,3 @@ cv2.imshow("product", imS)
 cv2.imwrite('product.jpg',image)
 
 cv2.waitKey(0)
-cv2.destroyAllWindows()
-
