@@ -8,12 +8,12 @@ rt = 0.15
 
 
 image = cv2.imread(
-    'test.png')
+    'wiki.png')
 
 cv2.imwrite('original.jpg',image)
 
 imageGRY = cv2.imread(
-    'test.png', cv2.IMREAD_GRAYSCALE)
+    'wiki.png', cv2.IMREAD_GRAYSCALE)
 cv2.imwrite('gray.jpg',imageGRY)
 
 blur = cv2.GaussianBlur(imageGRY, (5, 5), 0)
