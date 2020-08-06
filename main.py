@@ -71,9 +71,10 @@ cv2.imwrite('shadows_out_norm.png', result_norm)
 
 
 
-# loop over the detected barcodes
-barcodes = decode(result, symbols=[ZBarSymbol.QRCODE])
 
+bw_im = tresult_planes
+barcodes = decode(bw_im, symbols=[ZBarSymbol.QRCODE])
+image = result_planes
 
 # loop over the detected barcodes
 for barcode in barcodes:
