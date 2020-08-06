@@ -8,7 +8,7 @@ rt = 0.15
 
 
 image = cv2.imread(
-    'shadow_out.jpg')
+    'shadow_out.png')
 
 cv2.imwrite('original.jpg',image)
 
