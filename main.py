@@ -13,7 +13,7 @@ image = cv2.imread(
 cv2.imwrite('original.png',image)
 
 imageGRY = cv2.imread(
-    'shadow_out.png', cv2.IMREAD_GRAYSCALE)
+    'shadows_out.png', cv2.IMREAD_GRAYSCALE)
 cv2.imwrite('gray.png',imageGRY)
 
 blur = cv2.GaussianBlur(imageGRY, (5, 5), 0)
