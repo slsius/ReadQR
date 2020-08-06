@@ -26,7 +26,8 @@ cv2.imshow("bw_im", cv2.resize(
 
 cv2.imwrite('bw_im.jpg',bw_im)
 
-bw_im = image
+bw_im = cv2.imread(
+    'wiki.png')
 barcodes = decode(bw_im, symbols=[ZBarSymbol.QRCODE])
 
 
