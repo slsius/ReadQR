@@ -10,7 +10,7 @@ rt = 0.15
 image = cv2.imread(
     'shadows_out.png')
 image = cv2.imread(
-    'qr.png')
+    'qr.jpeg')
 
 cv2.imwrite('original.png',image)
 
